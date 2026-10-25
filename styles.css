@@ -1,0 +1,331 @@
+/* ==========================================================================
+   ONIGUIRI GUIRI (おにぎりぎり) • DESIGN SYSTEM & STYLESHEET
+   Conceito: Minimalismo Zen Japonês (Wabi-Sabi Moderno)
+   Paleta: Arroz Shari, Nori Profundo, Matcha Suave e Gergelim Dourado
+   ========================================================================== */
+
+:root {
+  /* Cores Primárias de Marca */
+  --color-nori-deep: #1b2e1e;
+  --color-nori-main: #253c28;
+  --color-nori-light: #38563d;
+  --color-nori-tint: #4b6f50;
+
+  /* Cores de Fundo & Papel Washi */
+  --color-rice-white: #fbf9f5;
+  --color-washi-warm: #f4efe4;
+  --color-washi-card: #f8f5ee;
+
+  /* Acentuações Gastronômicas */
+  --color-sesame-gold: #c49341;
+  --color-sesame-light: #dfb66e;
+  --color-sesame-dark: #a27529;
+  --color-umeboshi-red: #c75440;
+  --color-umeboshi-soft: #fbf1ef;
+
+  /* Tipografia & Contrastes */
+  --color-ink-black: #182219;
+  --color-ink-body: #324034;
+  --color-ink-muted: #647566;
+  --color-ink-faint: #98a89a;
+
+  /* Bordas e Sombras */
+  --border-subtle: rgba(37, 60, 40, 0.12);
+  --border-card: rgba(37, 60, 40, 0.08);
+  --shadow-sm: 0 4px 12px rgba(27, 46, 30, 0.04);
+  --shadow-md: 0 16px 36px -8px rgba(27, 46, 30, 0.1);
+  --shadow-lg: 0 28px 56px -12px rgba(27, 46, 30, 0.14);
+
+  /* Tipografia */
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Zen Maru Gothic', 'Plus Jakarta Sans', sans-serif;
+
+  /* Raio de Bordas */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
+
+  /* Transições Suaves */
+  --transition-fast: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   Reset Moderno e Configurações Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-body);
+  font-size: 16px;
+  color: var(--color-ink-body);
+  background-color: var(--color-rice-white);
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+  background: 
+    radial-gradient(circle at 20% 15%, rgba(223, 182, 110, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 20%, rgba(75, 111, 80, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 50% 85%, rgba(244, 239, 228, 0.8) 0%, transparent 60%),
+    var(--color-rice-white);
+}
+
+/* Canvas de Partículas e Textura Washi */
+#ambient-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.pattern-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(37, 60, 40, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.65;
+}
+
+/* ==========================================================================
+   Estrutura de Tela Cheia Zen (Full-Viewport Centered)
+   ========================================================================== */
+.page-wrapper {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1.5rem, 4vh, 3rem) clamp(1.25rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Conteúdo Principal (Hero Central)
+   ========================================================================== */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 840px;
+  margin-block: auto;
+  padding-block: clamp(1rem, 2.5vh, 2rem);
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Badge de Localização & Selo Hanko */
+.hero-badge-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.15rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-nori-main);
+  letter-spacing: 0.01em;
+}
+
+.badge-icon {
+  font-size: 1rem;
+}
+
+/* Selo Hanko Vermelho (判子) */
+.hanko-seal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-umeboshi-red);
+  border-radius: 6px;
+  color: var(--color-umeboshi-red);
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 900;
+  background-color: var(--color-umeboshi-soft);
+  transform: rotate(-6deg);
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(199, 84, 64, 0.15);
+}
+
+/* Vitrine do Logo Oficial */
+.hero-visual {
+  position: relative;
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.25rem);
+}
+
+.logo-card-frame {
+  position: relative;
+  display: inline-block;
+  padding: clamp(10px, 2vw, 14px);
+  border-radius: clamp(28px, 5vw, 36px);
+  background: linear-gradient(145deg, #ffffff, var(--color-washi-warm));
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 12px 36px -8px rgba(37, 60, 40, 0.12),
+    0 32px 64px -16px rgba(37, 60, 40, 0.08);
+  transition: transform var(--transition-slow);
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -15px;
+  border-radius: 46px;
+  background: radial-gradient(circle, rgba(196, 147, 65, 0.25) 0%, rgba(37, 60, 40, 0.05) 60%, transparent 80%);
+  filter: blur(16px);
+  z-index: -1;
+  pointer-events: none;
+  animation: glowPulse 5s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(0.98); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+.logo-wrapper {
+  overflow: hidden;
+  border-radius: clamp(20px, 4vw, 26px);
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-logo {
+  width: clamp(190px, 26vw, 280px);
+  height: auto;
+  aspect-ratio: 1008 / 1071;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  animation: gentleLevitate 6s ease-in-out infinite;
+}
+
+@keyframes gentleLevitate {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.logo-card-frame:hover {
+  transform: translateY(-4px);
+}
+
+.logo-card-frame:hover .main-logo {
+  transform: scale(1.02);
+}
+
+/* Títulos da Hero */
+.hero-content {
+  max-width: 780px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-display);
+  font-size: clamp(0.75rem, 1.8vw, 0.85rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-sesame-dark);
+  margin-bottom: 0.75rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.2;
+  color: var(--color-nori-deep);
+  letter-spacing: -0.025em;
+}
+
+.highlight-text {
+  position: relative;
+  display: inline-block;
+  color: var(--color-nori-main);
+  background: linear-gradient(180deg, transparent 65%, rgba(196, 147, 65, 0.28) 65%);
+  padding-inline: 0.2em;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Footer Sutil
+   ========================================================================== */
+.site-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  padding-top: clamp(1rem, 2vh, 1.5rem);
+}
+
+.footer-text {
+  font-size: clamp(0.78rem, 1.8vw, 0.88rem);
+  font-weight: 500;
+  color: var(--color-ink-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ==========================================================================
+   Acessibilidade & Preferência de Movimento Reduzido
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .main-logo,
+  .logo-glow {
+    animation: none !important;
+  }
+}
