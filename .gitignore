@@ -1,3 +1,5 @@
 /.idea/
 /skills/
 *.iml
+.agents
+.gemini/
